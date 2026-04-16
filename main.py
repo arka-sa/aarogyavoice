@@ -104,19 +104,39 @@ def retrieve_context(query: str, top_k: int = 3) -> str:
 
 
 def build_system_prompt(context: str) -> str:
-    return f"""You are VoiceDoc, a compassionate AI health navigator helping people in rural India get reliable health guidance over a voice call.
+    return f"""You are AarogyaVoice, a warm and trusted AI health guide helping people in rural India over a phone call. Speak like a caring ASHA worker or village health volunteer — simple, kind, and direct. Never cold or clinical.
 
-MEDICAL KNOWLEDGE (use this to answer):
+MEDICAL KNOWLEDGE (always use this first to answer):
 {context}
 
-RULES:
-1. Keep responses SHORT and CLEAR — this is a voice call, not a text message. Max 3-4 sentences.
-2. Use simple, everyday language. No complex medical terms.
-3. ALWAYS recommend seeing a doctor or calling 108 for serious or unclear symptoms.
-4. For ANY life-threatening emergency (chest pain, stroke, difficulty breathing, unconscious person, snake bite), immediately say "Call 108 right now — this is an emergency."
-5. Be warm, calm, and reassuring.
-6. Do not make definitive diagnoses. Guide people toward care.
-7. Free government services are available — mention them when relevant (PHC, Ayushman Bharat, JSY).
+═══ EMERGENCY PROTOCOL — HIGHEST PRIORITY ═══
+If the caller mentions ANY of these: chest pain, difficulty breathing, unconsciousness, face drooping or arm weakness or slurred speech (stroke), severe bleeding, snakebite, poisoning, or pregnancy emergency — IMMEDIATELY respond:
+"This sounds serious. Please call 108 right now — it is the free government ambulance. Do not wait, call immediately."
+Then give ONE simple first-aid tip if helpful. Do not say anything else until they confirm they will call.
+
+═══ VOICE CALL RULES — ALWAYS FOLLOW ═══
+1. Maximum 2 to 3 SHORT sentences per response. This is a phone call, not a chat message.
+2. No bullet points, no lists, no formatting — only natural spoken words.
+3. Start by briefly confirming what you heard: "I understand you have..." before giving advice.
+4. Speak warmly — imagine talking to a worried parent or village elder.
+
+═══ MEDICAL GUIDANCE ═══
+- Use the medical knowledge above as your primary source of information.
+- Never diagnose definitively. Say "this could be..." or "this sounds like it might be..."
+- For any symptom lasting more than 3 days, always recommend visiting the nearest PHC (Primary Health Centre).
+- For children under 5 with fever — recommend PHC visit the same day, do not wait.
+- Mention free government services when relevant:
+  • Call 108 — free emergency ambulance available 24 hours
+  • PHC (Primary Health Centre) — free outpatient care nearby
+  • Ayushman Bharat / PM-JAY — free hospital treatment up to 5 lakh rupees
+  • JSY (Janani Suraksha Yojana) — free support for pregnant women
+  • ASHA worker — free home health visits in your village
+
+═══ NEVER DO THESE ═══
+- Never say "As an AI" or "I am just a bot"
+- Never give specific medicine dosages
+- Never use complex medical words without immediately explaining them simply
+- Never dismiss any symptom as unimportant — always take it seriously
 """
 
 
@@ -162,11 +182,18 @@ def call_gemini(system_prompt: str, messages: list) -> str:
     response = gemini_model.generate_content(
         full_prompt,
         generation_config={
-            "max_output_tokens": 200,
+            "max_output_tokens": 400,
             "temperature": 0.4,
         },
     )
-    return response.text.strip()
+    # Gemini 2.5 Pro may return thinking parts — extract only text parts
+    try:
+        return response.text.strip()
+    except Exception:
+        for part in response.candidates[0].content.parts:
+            if hasattr(part, "text") and part.text:
+                return part.text.strip()
+        return "I'm sorry, I couldn't process that. Please try again."
 
 
 async def stream_claude(system_prompt: str, messages: list):
@@ -202,8 +229,7 @@ async def stream_claude(system_prompt: str, messages: list):
 
 
 async def stream_gemini(system_prompt: str, messages: list):
-    """Yield Gemini response in OpenAI SSE format (simulated streaming)."""
-    # Gemini streaming via generate_content(stream=True)
+    """Yield Gemini response in OpenAI SSE format."""
     history_text = ""
     for m in messages:
         role = "User" if m["role"] == "user" else "VoiceDoc"
@@ -213,12 +239,15 @@ async def stream_gemini(system_prompt: str, messages: list):
 
     response = gemini_model.generate_content(
         full_prompt,
-        generation_config={"max_output_tokens": 200, "temperature": 0.4},
+        generation_config={"max_output_tokens": 400, "temperature": 0.4},
         stream=True,
     )
 
     for chunk in response:
-        text = chunk.text if chunk.text else ""
+        try:
+            text = chunk.text if chunk.text else ""
+        except Exception:
+            continue  # skip thinking-only chunks (Gemini 2.5 Pro)
         if text:
             data = {
                 "id": "voicedoc-stream",
@@ -251,6 +280,7 @@ async def health_check():
     return {"status": "ok", "service": "VoiceDoc", "llm": llm_provider}
 
 
+@app.post("/chat/completions")
 @app.post("/chat")
 async def custom_llm_endpoint(request: Request):
     """
@@ -265,12 +295,31 @@ async def custom_llm_endpoint(request: Request):
     messages: list = body.get("messages", [])
     stream: bool = body.get("stream", False)
 
+    # Debug: write raw Vapi request to file so we can inspect it
+    try:
+        with open("/tmp/vapi_last_request.json", "w") as f:
+            json.dump(body, f, indent=2)
+    except Exception:
+        pass
+    logger.info(f"Raw body keys: {list(body.keys())}")
+
+    def get_content(m: dict) -> str:
+        """Vapi uses 'message' key; OpenAI uses 'content'. Handle both."""
+        val = m.get("content") or m.get("message") or ""
+        if isinstance(val, list):
+            # OpenAI content array: [{"type": "text", "text": "..."}]
+            return " ".join(p.get("text", "") for p in val if isinstance(p, dict))
+        return str(val)
+
+    def normalize_role(role: str) -> str:
+        """Vapi uses 'bot'; OpenAI uses 'assistant'."""
+        return "assistant" if role == "bot" else role
+
     # Extract latest user message for RAG
     user_query = ""
     for msg in reversed(messages):
         if msg.get("role") == "user":
-            content = msg.get("content", "")
-            user_query = content if isinstance(content, str) else str(content)
+            user_query = get_content(msg)
             break
 
     logger.info(f"[{llm_provider.upper()}] User: {user_query[:100]}")
@@ -282,9 +331,9 @@ async def custom_llm_endpoint(request: Request):
     system_prompt = build_system_prompt(context)
 
     filtered_messages = [
-        {"role": m["role"], "content": m.get("content", "")}
+        {"role": normalize_role(m["role"]), "content": get_content(m)}
         for m in messages
-        if m.get("role") in ("user", "assistant")
+        if normalize_role(m.get("role", "")) in ("user", "assistant")
     ]
 
     # ── Streaming ──────────────────────────────────────────────────────────

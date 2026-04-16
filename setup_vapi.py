@@ -27,22 +27,21 @@ def create_voicedoc_assistant(server_url: str) -> dict:
         "model": {
             "provider": "custom-llm",
             "url": f"{server_url}/chat",
-            # Tells Vapi to send conversation to our RAG endpoint
             "model": "voicedoc-rag",
+            "systemPrompt": (
+                "You are VoiceDoc, a compassionate AI health navigator for rural India. "
+                "Keep all responses under 3 sentences and very simple. "
+                "Always recommend calling 108 for emergencies."
+            ),
         },
         "voice": {
-            "provider": "playht",
-            "voiceId": "jennifer",  # Clear, warm female voice
+            "provider": "11labs",
+            "voiceId": "21m00Tcm4TlvDq8ikWAM",  # Rachel — clear, warm, widely available
         },
         "firstMessage": (
             "Hello! I'm VoiceDoc, your health guide. "
             "Please describe what you or your family member is feeling, "
             "and I'll help you understand what to do. How can I help you today?"
-        ),
-        "systemPrompt": (
-            "You are VoiceDoc, a compassionate AI health navigator for rural India. "
-            "Keep all responses under 3 sentences and very simple. "
-            "Always recommend calling 108 for emergencies."
         ),
         "endCallPhrases": ["goodbye", "thank you goodbye", "ok bye", "thank you doctor"],
         "serverUrl": f"{server_url}/vapi/webhook",
