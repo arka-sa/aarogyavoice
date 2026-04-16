@@ -1,0 +1,112 @@
+[
+  {
+    "id": "fever_001",
+    "category": "fever",
+    "text": "Fever: A body temperature above 38°C (100.4°F) is considered a fever. For mild fever (38-38.5°C), rest and drink plenty of fluids like water, ORS, or coconut water. You can take paracetamol (500mg for adults, as per weight for children). Apply a cool wet cloth on the forehead. Avoid aspirin in children. If fever is above 39.5°C, lasts more than 3 days, or is accompanied by stiff neck, rash, or difficulty breathing, go to a hospital immediately."
+  },
+  {
+    "id": "fever_002",
+    "category": "fever",
+    "text": "High fever in children: If a child under 3 months has any fever, go to the doctor immediately. For children 3 months to 3 years with fever above 39°C, seek medical attention. Signs of danger in a child with fever: not drinking fluids, excessive sleepiness, seizures, difficulty breathing, rash, or fever lasting more than 2 days. Give paracetamol syrup as per the child's weight. Keep the child cool, remove extra clothing."
+  },
+  {
+    "id": "dengue_001",
+    "category": "dengue",
+    "text": "Dengue fever symptoms: Sudden high fever (40°C), severe headache especially behind the eyes, joint and muscle pain, nausea, vomiting, skin rash (appears 2-5 days after fever), mild bleeding from gums or nose. Dengue is spread by Aedes mosquito bites during daytime. Treatment: rest, drink plenty of fluids, take paracetamol only (DO NOT take ibuprofen or aspirin as they increase bleeding risk). Warning signs that need immediate hospital care: severe abdominal pain, persistent vomiting, bleeding gums or blood in vomit, rapid breathing, fatigue."
+  },
+  {
+    "id": "malaria_001",
+    "category": "malaria",
+    "text": "Malaria symptoms: Fever with chills and sweating in cycles (every 2-3 days), headache, body ache, nausea, vomiting, fatigue. Malaria is spread by Anopheles mosquito bites at night. It is common in rural areas especially during monsoon. You must see a doctor for a malaria blood test (RDT or slide test). Treatment requires specific anti-malaria medicines (chloroquine or artemisinin-based) prescribed by a doctor. Danger signs: unconsciousness or confusion, seizures, difficulty breathing, jaundice (yellow eyes), inability to eat or drink — these require immediate hospitalization."
+  },
+  {
+    "id": "typhoid_001",
+    "category": "typhoid",
+    "text": "Typhoid fever symptoms: Sustained high fever (39-40°C) that builds up over days, headache, weakness, stomach pain, constipation or diarrhea, loss of appetite, rose-colored spots on chest or abdomen. Typhoid is caused by contaminated food and water. See a doctor immediately as diagnosis requires blood or stool test (Widal test). Treatment: antibiotics prescribed by doctor (do not self-medicate). Eat soft, easily digestible food. Drink boiled or purified water only. Prevention: wash hands before eating, drink clean water, avoid street food."
+  },
+  {
+    "id": "diarrhea_001",
+    "category": "diarrhea",
+    "text": "Diarrhea and dehydration: Loose watery stools more than 3 times a day. The main danger is dehydration. Give ORS (Oral Rehydration Solution) immediately — mix one ORS packet in 1 liter of clean water and give sips frequently. If ORS is not available, make home solution: 1 liter water + 6 teaspoons sugar + half teaspoon salt. For adults, drink at least 3 liters per day. For children, give ORS after every loose stool. Warning signs requiring hospital: blood in stool, no urination for 6+ hours, sunken eyes, unable to keep fluids down, diarrhea lasting more than 3 days."
+  },
+  {
+    "id": "diarrhea_002",
+    "category": "diarrhea",
+    "text": "Diarrhea in children: Signs of dangerous dehydration in a child: sunken eyes, crying without tears, dry mouth and tongue, skin that does not spring back when pinched, very decreased urine output, extreme thirst or inability to drink. Take the child to hospital immediately. Give ORS in small frequent sips. Breastfeeding mothers should continue breastfeeding. Do not give anti-diarrheal medicines to children without doctor's advice. Zinc supplements (10-20mg daily for 10-14 days) help reduce severity and duration."
+  },
+  {
+    "id": "chest_pain_001",
+    "category": "emergency",
+    "text": "EMERGENCY - Chest pain: Chest pain can be a sign of heart attack. Call 108 immediately if the person has: crushing or squeezing chest pain, pain spreading to arm, jaw, neck or back, shortness of breath, sweating, nausea, or feeling of doom. Make the person sit or lie comfortably, loosen tight clothing. If the person is conscious and not allergic, give one aspirin (300-325mg) to chew. Do not leave the person alone. Do not give food or water. This is a medical emergency — do not wait to see if it gets better."
+  },
+  {
+    "id": "breathing_001",
+    "category": "emergency",
+    "text": "EMERGENCY - Difficulty breathing: If someone cannot breathe properly, is turning blue (lips, fingertips), is breathing very fast or very slow, is using neck and chest muscles to breathe, or is confused — call 108 immediately. Keep the person sitting upright or propped up with pillows. Loosen any tight clothing around neck and chest. Do not give food or water. Stay calm and reassure the person. If they stop breathing and have no pulse, start CPR if you know how and call 108."
+  },
+  {
+    "id": "stroke_001",
+    "category": "emergency",
+    "text": "EMERGENCY - Stroke: Use the FAST test — Face drooping (ask person to smile, is one side drooping?), Arm weakness (ask to raise both arms, does one drift down?), Speech difficulty (is speech slurred or strange?), Time to call 108. Other stroke signs: sudden severe headache, sudden vision loss, sudden confusion, sudden loss of balance. Do not give anything to eat or drink. Note the time symptoms started. Every minute matters in stroke — call 108 immediately."
+  },
+  {
+    "id": "cough_001",
+    "category": "respiratory",
+    "text": "Cough and cold: Common cold causes runny nose, sore throat, mild cough, mild fever. Rest and drink warm fluids (warm water, turmeric milk, ginger tea). Honey (for adults and children over 1 year) soothes sore throat. Steam inhalation helps with congestion. Antibiotics do not work for viral colds — do not take them without doctor's advice. See a doctor if cough lasts more than 3 weeks, you cough up blood, you have high fever, or you have difficulty breathing. Cough with fever and difficulty breathing may indicate pneumonia — see a doctor urgently."
+  },
+  {
+    "id": "tb_001",
+    "category": "respiratory",
+    "text": "Tuberculosis (TB): Warning signs — cough lasting more than 2-3 weeks, coughing blood, night sweats, unexplained weight loss, low-grade fever in evenings, fatigue, chest pain. TB is curable with free medicines available at government health centers. Testing is free at government hospitals. If you have these symptoms, see a doctor and get tested. Continue the full course of TB treatment (6 months) even if you feel better — stopping early leads to drug resistance. Cover your mouth while coughing. Free TB treatment is available under the government's NIKSHAY program."
+  },
+  {
+    "id": "snake_bite_001",
+    "category": "emergency",
+    "text": "EMERGENCY - Snake bite: Call 108 immediately. Keep the person calm and still — movement spreads venom faster. Remove tight clothing, watches, and rings near the bite area as swelling will occur. Keep the bitten limb at or below heart level. Do NOT: suck the venom, cut the wound, apply a tourniquet, apply ice, give alcohol. Do NOT try home remedies. The only treatment is antivenom available at hospitals. Note the time of bite and try to remember the snake's appearance (do NOT try to catch it). Even if there is no immediate pain, go to hospital — some venom takes time to show symptoms."
+  },
+  {
+    "id": "pregnancy_001",
+    "category": "maternal_health",
+    "text": "Danger signs in pregnancy: Go to hospital immediately if you have: heavy bleeding from vagina, severe headache with blurred vision or swelling of face and hands (signs of preeclampsia), reduced or no baby movements after 28 weeks, high fever, severe abdominal pain, leaking fluid before due date, fits or seizures, or difficulty breathing. Regular antenatal check-ups are essential — at least 4 visits during pregnancy. Get tetanus injection and iron-folic acid tablets. Deliver at a health facility for safety of mother and baby. Free delivery services are available at government hospitals under Janani Suraksha Yojana (JSY)."
+  },
+  {
+    "id": "child_malnutrition_001",
+    "category": "child_health",
+    "text": "Child malnutrition warning signs: Very thin arms and legs, swollen feet and face, very pale skin (anemia), hair that is thin and falls out easily, child does not play or is very weak. Malnutrition needs immediate medical attention. The child may need special therapeutic food (Plumpy'Nut or F-75/F-100 formulas) available at government nutrition rehabilitation centers (NRC) for free. Continue breastfeeding if the child is under 2 years. Feed the child small amounts frequently (6-8 times a day) with calorie-rich foods. Anganwadi centers provide free supplementary nutrition."
+  },
+  {
+    "id": "diabetes_001",
+    "category": "chronic_disease",
+    "text": "Diabetes management: Signs of low blood sugar (hypoglycemia): shakiness, sweating, dizziness, confusion, fast heartbeat — immediately give sugar (glucose water, fruit juice, 2-3 teaspoons of sugar). Signs of high blood sugar: excessive thirst, frequent urination, fatigue, blurred vision — check blood sugar and consult doctor. Take diabetes medicines regularly even if you feel well. Follow a low-sugar, low-refined-carb diet. Walk 30 minutes daily. Check your feet daily for wounds (diabetes impairs healing). Never skip meals if you are on insulin. Regular check-ups for eyes, kidneys, and feet every 6 months."
+  },
+  {
+    "id": "hypertension_001",
+    "category": "chronic_disease",
+    "text": "High blood pressure (Hypertension): Often has NO symptoms — it is called the silent killer. Severe hypertension may cause severe headache, blurred vision, chest pain. Take blood pressure medicines daily without fail even if you feel well — stopping suddenly is dangerous. Reduce salt intake significantly. Avoid pickles, papads, processed foods. Exercise regularly. Manage stress. Avoid smoking and alcohol. Normal blood pressure is below 120/80 mmHg. If BP is above 180/120 mmHg with symptoms, go to emergency immediately. Free BP medicines are available at government health centers under Ayushman Bharat."
+  },
+  {
+    "id": "burn_001",
+    "category": "first_aid",
+    "text": "Burn first aid: For minor burns — immediately run cool (not cold or ice) water over the burn for 20 minutes. Do NOT apply toothpaste, butter, oil, or turmeric — these cause infection. Do NOT break blisters. Cover loosely with a clean cloth. Take paracetamol for pain. Go to a doctor if: burn is larger than your palm, burn is on face, hands, feet, or genitals, burn is deep (white or charred), burn is from chemicals or electricity, or the person is a child or elderly. For large burns covering much of the body, call 108 immediately."
+  },
+  {
+    "id": "wound_001",
+    "category": "first_aid",
+    "text": "Wound care: Clean the wound with clean running water for several minutes. Remove visible dirt gently. Apply antiseptic (betadine or hydrogen peroxide diluted). Cover with a clean bandage. Change bandage daily. Signs of infection (go to doctor): increasing redness, warmth, swelling, pus discharge, fever, red streaks spreading from wound. For deep cuts that won't stop bleeding — press firmly with clean cloth for 10-15 minutes, elevate the injured area above heart level. If bleeding doesn't stop, go to hospital for stitches. Make sure tetanus vaccination is up to date for any deep or dirty wound."
+  },
+  {
+    "id": "mental_health_001",
+    "category": "mental_health",
+    "text": "Mental health support: If you or someone you know feels extremely sad, hopeless, or is thinking about harming themselves, please call the Vandrevala Foundation helpline: 1860-2662-345 (available 24/7 in multiple Indian languages, free of charge). Signs that someone needs mental health help: persistent sadness for weeks, not eating or sleeping, withdrawing from family, talking about death or suicide, hearing voices. Mental illness is treatable. Free mental health services are available at government hospitals. Under Ayushman Bharat, mental health treatment is covered. Asking for help is a sign of strength, not weakness."
+  },
+  {
+    "id": "eye_001",
+    "category": "eye_health",
+    "text": "Eye emergencies: Go to hospital immediately for: sudden loss of vision, eye injury from chemical or sharp object, severe eye pain with redness and vomiting (could be glaucoma), sudden appearance of many floaters or flashes of light, curtain-like vision loss. For chemical in eye: immediately flush with plenty of clean water for 15-20 minutes, then go to hospital. For foreign body in eye: do NOT rub the eye — blink rapidly, let tears wash it out, or flush with clean water. Do not try to remove embedded objects. Children with squinting eyes (crossed eyes) should see an eye doctor early as it is treatable."
+  },
+  {
+    "id": "general_wellness_001",
+    "category": "wellness",
+    "text": "General health maintenance: Drink at least 8 glasses (2-3 liters) of clean or boiled water daily. Wash hands with soap for 20 seconds before eating, after using toilet, after touching animals. Eat a balanced diet with vegetables, fruits, pulses, whole grains. Exercise or walk at least 30 minutes daily. Sleep 7-8 hours per night. Avoid tobacco in all forms — it causes cancer, heart disease, and lung disease. Avoid alcohol. Get recommended vaccinations. Get a health check-up once a year if over 40 years. Protect yourself from mosquitoes by using nets and repellents, and eliminate standing water near your home."
+  }
+]
